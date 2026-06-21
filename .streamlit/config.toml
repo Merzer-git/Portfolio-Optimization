@@ -1,0 +1,18 @@
+[theme]
+base = "dark"
+primaryColor = "#0F62FE"
+backgroundColor = "#161616"
+secondaryBackgroundColor = "#383838"
+#specialBackgroundColor = "#202020"
+textColor = "#f4f4f4"
+
+#SECUENCIA DE COLORES PARA PLOTLY
+#color_sequence = ["#0F62FE", "#4589FF", "#6EA6FF", "#A8C8FF", "#DDE8FF"]
+
+#PUNTO OPTIMO DE FRONTERA
+#optimaColor = "#F1C21B"
+
+#ESTADOS DEL JOB
+#color_success = "#24A148" # st.success
+#color_warning = "#F1C21B" # st.warning
+#color_error = "#DA1E28" # st.error

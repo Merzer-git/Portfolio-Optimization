@@ -1,0 +1,11 @@
+streamlit
+numpy
+pandas
+scipy
+yfinance
+pyarrow
+requests
+python-dotenv
+plotly
+streamlit-authenticator
+streamlit-extras
