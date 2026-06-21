@@ -3,7 +3,7 @@ import time
 import requests
 import streamlit as st
 
-API_KEY = st.secrets['API_KEY']
+API_KEY = st.secrets['IBM_API_KEY']
 SPACE_ID = "1fa2f4bb-8bc4-4967-b892-2250e978266b"
 DEPLOYMENT_ID = "019ecbf5-b0a0-743a-b6ca-c6ceb43a046d"
 CONNECTION_ID = "019e5cc8-4919-7730-94ff-971f05c8e5d8"
