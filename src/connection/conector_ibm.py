@@ -3,7 +3,7 @@ import time
 import requests
 import streamlit as st
 
-API_KEY = "_K3EdAHyHKzOiMsle4xRTwh6-t_hqpwb-kGWw8K3al7q" # <-- ¡Poné tu API Key de IBM Cloud!
+
 SPACE_ID = "1fa2f4bb-8bc4-4967-b892-2250e978266b"
 DEPLOYMENT_ID = "019ecbf5-b0a0-743a-b6ca-c6ceb43a046d"
 CONNECTION_ID = "019e5cc8-4919-7730-94ff-971f05c8e5d8"
@@ -84,6 +84,7 @@ def ejecutar_optimizacion_ibm(df_returns, df_covarianza, capital, rho):
 
   res_job = requests.post(wml_url, headers={**auth_header, "Content-Type": "application/json"}, json=payload_job)
   job_data = res_job.json()
+  print(job_data)
   run_id = job_data['metadata']['id']
   print(f"Trabajo creado encolado. ID de Ejecución: {run_id}")
 

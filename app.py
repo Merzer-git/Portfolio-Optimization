@@ -295,7 +295,7 @@ with col_entradas[0]:
 
 # with st.container(key='tarjeta_graficosEntradas', border=True):
 # Graficos sobre datos de entrada
-if 'matriz_covarianza' in st.session_state and 'retornos_esperados' in st.session_state:
+if st.session_state['matriz_covarianza'] is not None and st.session_state['retornos_esperados'] is not None:
   matriz = st.session_state['matriz_covarianza']
   retornos = st.session_state['retornos_esperados']
 
