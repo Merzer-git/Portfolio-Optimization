@@ -43,28 +43,5 @@ def plot_barchart(df_retornos):
     showlegend=False,
     height=500 # Altura controlada para alinearse con el pie chart
   )
-    # fig = px.bar(
-    #     df_plot, 
-    #     x='Retorno (%)', 
-    #     y='Ticker', 
-    #     orientation='h',
-    #     # Agregamos el símbolo de % al texto de la barra
-    #     text=df_plot['Retorno (%)'].apply(lambda x: f"{x:.2f}%"), 
-    # )
-
-    # fig.update_layout(
-    #     plot_bgcolor='#383838',
-    #     paper_bgcolor='#383838',
-    #     margin=dict(l=20, r=40, t=40, b=20),
-    #     xaxis=dict(showgrid=False, zeroline=False, visible=False), # Ocultamos el eje X
-    #     yaxis=dict(showgrid=False, zeroline=False, color="white", title=""),
-    #     # Configuración del título
-    #     title=''
-    # )
-    # fig.update_traces(
-    #     marker_color="#0f62fe", # El azul de IBM/tu diseño original
-    #     textposition="inside", 
-    #     textfont_color="white"
-    # )
-
+  
     return fig

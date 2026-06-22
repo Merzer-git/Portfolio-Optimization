@@ -21,9 +21,6 @@ def ejecutar_optimizacion_ibm(df_returns, df_covarianza, capital, rho):
     'inv': df_returns.index,
     'val': df_returns.iloc[:, 0].values
   })
-
-  st.write(df_cov)
-  st.write(df_returns_limpio)
   
   csv_returns = df_returns_limpio.to_csv(index=False)
   csv_covariance = df_cov.to_csv(index=False)
@@ -84,7 +81,7 @@ def ejecutar_optimizacion_ibm(df_returns, df_covarianza, capital, rho):
 
   res_job = requests.post(wml_url, headers={**auth_header, "Content-Type": "application/json"}, json=payload_job)
   job_data = res_job.json()
-  print(job_data)
+  # print(job_data)
   run_id = job_data['metadata']['id']
   print(f"Trabajo creado encolado. ID de Ejecución: {run_id}")
 
@@ -95,7 +92,7 @@ def ejecutar_optimizacion_ibm(df_returns, df_covarianza, capital, rho):
   url_status = f"{wml_url.split('?')[0]}/{run_id}?version=2020-09-01&space_id={SPACE_ID}"
 
   while estado in ["queued", "running"]:
-      print("El motor está procesando, bancá un toque...")
+      # print("El motor está procesando, bancá un toque...")
       time.sleep(3)
       res_status = requests.get(url_status, headers=auth_header)
 
@@ -122,22 +119,30 @@ def ejecutar_optimizacion_ibm(df_returns, df_covarianza, capital, rho):
 
     variables_raw = datos_solucion.get('CPLEXSolution', {}).get('variables', [])
     pesos_limpios = []
+    precios_duales = []
 
     for item in variables_raw:
       ticker = item['name'].replace('alloc', '')
       proporcion = float(item['value'])
-
+      costo_reducido = float(item.get('reducedCost', 0.0))
+      
       if proporcion > 0.001:
         pesos_limpios.append({
           'Activo': ticker,
           'Proporción': proporcion
         })
 
+      precios_duales.append({
+        'Activo': ticker,
+        'Precio Dual': costo_reducido
+      })
+
     return {
       'status': 'success',
       'ganancia_proporcion': ganancia_proporcion,
       'ganancia_real': ganancia_real,
-      'pesos': pesos_limpios
+      'pesos': pesos_limpios,
+      'sensibilidad': precios_duales
     }
   else:
     return {

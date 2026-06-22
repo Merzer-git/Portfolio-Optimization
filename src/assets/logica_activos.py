@@ -1,7 +1,6 @@
 import yfinance as yf
 import numpy as np
 import pandas as pd
-from datetime import datetime, timedelta
 import streamlit as st
 
 def calcular_periodo(rango):
@@ -41,8 +40,8 @@ def get_activos(tickers, rango_tiempo):
     covarianza = simple_returns.cov() * 252
 
     print(covarianza)
-    return retornos, covarianza
+    return retornos, covarianza, simple_returns
     
   except Exception as e:
     st.error(f'Error al descargar datos de Yahoo Finance: {e}')
-    return None, None
+    return None, None, None
