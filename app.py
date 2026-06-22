@@ -296,15 +296,15 @@ with col_mod_data[0]:
   with st.container(key='tarjeta_info', border=True):
     st.markdown('##### Acerca del Optimizador')
     st.markdown("""
-      Esta herramienta construye portafolio de inversión óptimos analizando datos historicos del mercado de capitales. El objetivo es encontrar la combinacion de activos que maximice la rentabilidad esperada de la cartera respentando el nivel de riesgo asumido por el inverso
+      Esta herramienta construye un portafolio de inversión óptimo analizando datos historicos del mercado de capitales. El objetivo es encontrar la combinacion de activos que maximice la rentabilidad esperada de la cartera respetando el nivel de riesgo asumido por el inversor.
 
-      El motor lógico esta basado en la **Teoría Moderna de Portafolios** fundamentada en la publicación original [*Portfolio Selection* (Harry Markowitz, 1952)](https://www.jstor.org/stable/2975974). Este problema de optimizacion del tipo cuadratico se resuelve en la nube utilizando el solver de **IBM Watson Studio**
+      El motor lógico esta basado en la **Teoría Moderna de Portafolios** fundamentada en la publicación original [*Portfolio Selection* (Harry Markowitz, 1952)](https://www.jstor.org/stable/2975974). Este problema de optimizacion del tipo cuadrático se resuelve en la nube utilizando el solver de **IBM Watson Studio**
       
       El modelo busca maximizar el retorno esperado penalizado por la varianza (riesgo), ponderado por el factor de aversión al riesgo del inversor:
       """)
     st.latex(r"\max \left( \sum_{i=1}^{n} w_i \mu_i - \frac{\rho}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} w_i w_j \sigma_{ij} \right)")
     st.markdown(r"""
-      *Donde $w$ son los pesos del portafolio, $\mu$ los retornos esperados, $\sigma$ la matriz de covarianza y $\rho$ la aversión al reisgo*
+      *Donde $w$ son los pesos del portafolio, $\mu$ los retornos esperados, $\sigma$ la matriz de covarianza y $\rho$ la aversión al riesgo.*
 
       Para asegurar una cartera realista, el solver opera bajo una estrategia *long-only* (sin ventas en corto) y asignación total del capital:
       """)
